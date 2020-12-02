@@ -24,7 +24,7 @@ for (i in 1:nfeat){
 coef <- coef(cv_gglasso, cv_gglasso$lambda.1se)
 coef_grp = coef[seq(2, nrow(coef), 8)]!=0
 
-pdf(filename="C:/Users/Jennifer Chen/Desktop/honors project/plots/gscan_ast.pdf", width=1200, height=500)
+pdf(filename="~/plots/gscan_ast.pdf", width=1200, height=500)
 idx <- 1:7641
 idx <- idx[coef_grp]
 graph <- ggplot() + 
