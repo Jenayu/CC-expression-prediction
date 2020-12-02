@@ -11,7 +11,7 @@ df=data.frame(lambdas=cvridge$lambda, cvm=cvridge$cvm,
               scaled=-log10((cvridge$cvm)/(cvridge$cvm[1])), rsqs=1-cvridge$cvm/var(z))
 
 
-png(filename="C:/Users/Jennifer Chen/Desktop/honors project/plots/ast_ridge.png", width=400, height=250)
+png(filename="~/plots/ast_ridge.png", width=400, height=250)
 ggplot(data=df,aes(x=round(log10(lambdas),2), y=cvm)) + # lambdas vs. errors 
   geom_point(mapping=aes(size=0.1, color='skyblue3')) +  # resize & recolor the dots
   theme(text = element_text(size=12),legend.position="none") +  # remove the legend
@@ -31,7 +31,7 @@ cvlasso <- cv.glmnet(x,z,alpha=1,lambda=lambdas, nfolds=45)
 df=data.frame(lambdas=cvlasso$lambda, cvm=cvlasso$cvm, 
               scaled=-log10((cvlasso$cvm)/cvlasso$cvm[1]), rsqs=1-cvlasso$cvm/var(z))
 
-png(filename="C:/Users/Jennifer Chen/Desktop/honors project/plots/ast_lasso.png", width=400, height=250)
+png(filename="~/plots/ast_lasso.png", width=400, height=250)
 ggplot(data=df,aes(x=log10(lambdas),y=cvm)) + 
   geom_point(mapping=aes(size=0.1, color='skyblue3')) + 
   theme(text = element_text(size=12),legend.position="none") + 
@@ -59,7 +59,7 @@ for (i in 1:length(lambdas)){
   nzeros[i] <- sum(coef(cv_gglasso, s=lambdas[i])!=0)-1
 }
 
-png(filename="C:/Users/Jennifer Chen/Desktop/honors project/plots/ast_gglasso.png", width=400, height=250)
+png(filename="~/plots/ast_gglasso.png", width=400, height=250)
 ggplot(data=df,aes(x=log10(lambdas),y=cvm)) + 
   geom_point(mapping=aes(size=0.1, color='skyblue3')) + 
   theme(text = element_text(size=12),legend.position="none") + 
